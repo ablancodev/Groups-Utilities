@@ -21,7 +21,7 @@
  */
  function my_groups_list_posts() {
 
-	$posts = Groups_Post_Access::the_posts(get_posts());
+	$posts = Groups_Post_Access::the_posts(get_posts(array('posts_per_page'=>-1)));
 	echo '<ul>';
 	foreach ($posts as $post)  {
 		echo '<li><a href="' . get_permalink($post->ID) . '">' . get_the_title($post->ID) . '</a></li>';
