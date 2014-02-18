@@ -31,4 +31,23 @@
 
 }
 add_shortcode( 'groups_list_posts', 'my_groups_list_posts' );
+
+
+function my_groups_list_private_posts() {
+
+	$all_posts = get_posts(array('posts_per_page'=>-1));
+	
+	$my_posts = Groups_Post_Access::the_posts(get_posts(array('posts_per_page'=>-1)));
+	
+	echo '<ul>';
+	foreach ($all_posts as $post)  {
+		if ( !in_array($post, $my_posts) ) {
+			echo '<li><a href="' . get_permalink($post->ID) . '">' . get_the_title($post->ID) . '</a></li>';
+		}	
+	}
+	echo '</ul>';
+	
+
+}
+add_shortcode( 'groups_list_private_posts', 'my_groups_list_private_posts' );
 ?>
