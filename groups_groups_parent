@@ -1,11 +1,18 @@
 function shortcode_groups_groups_parent ( $attr = array() ) {
 		global $wpdb;
 		
-		$parent_id =  isset( $attr['parent_id'] ) ? intval($attr['parent_id']) : 0;
+		$parent_id =  isset( $attr['parent_id'] ) ? intval($attr['parent_id']) : null;
 		
 		$groups_table = _groups_get_tablename( 'group' );
 		
-		return $wpdb->get_results( "SELECT * FROM $groups_table WHERE parent_id = " . $parent_id . " ORDER BY name" );
+		$groups = $wpdb->get_results( "SELECT * FROM $groups_table WHERE parent_id = " . $parent_id . " ORDER BY name" );
+		
+		$output = '<ul>';
+		foreach ($groups as $group)  {
+			$output .= '<li>' . $group->name . '</li>';
+		}
+		$output .= '</ul>';
+		return $output;
 }
 
 add_shortcode('groups_groups_parent', 'shortcode_groups_groups_parent');
