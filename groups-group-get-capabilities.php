@@ -1,4 +1,4 @@
-public static function groups_group_get_capabilities ( $group_id ) {
+function groups_group_get_capabilities ( $group_id ) {
   global $wpdb;
   $result = false;
   
