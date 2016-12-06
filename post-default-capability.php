@@ -9,8 +9,6 @@ function my_groups_access_restrictions_capability_selected (
 		$read_caps,
 		$post_id,
 		$post_type ) {
-	
-			error_log( $capability_id );
 			
 			if ( $capability_id == 160 ) {
 				return true;
