@@ -1,4 +1,4 @@
-function get_all_capability (  ) {
+function get_all_capabilities (  ) {
 		global $wpdb;
 		
 		$capabilities_table = _groups_get_tablename( 'capability' );
